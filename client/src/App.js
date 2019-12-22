@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import Score from "./Component/Score";
+import Score from "./Component/NavBar/Score";
 import Thumbnail from "./Component/Thumbnail";
+import Jumbotron from "./Component/Jumbotron";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -51,9 +53,16 @@ class App extends Component {
     return (
       <div className="App">
         <Score score={this.state.score} topScore={this.state.topScore} />
-        {this.state.title.map((titles, index) => (
-          <Thumbnail src={titles} key={index} onClick={this.handleTitleClick} />
-        ))}
+        <Jumbotron />
+        <div className="wrapper">
+          {this.state.title.map((titles, index) => (
+            <Thumbnail
+              src={titles}
+              key={index}
+              onClick={this.handleTitleClick}
+            />
+          ))}
+        </div>
       </div>
     );
   }
